@@ -26,6 +26,9 @@ public class AmzRunner {
             return;
         }
         scriptsDir.eachFile {File scriptFile ->
+            if (scriptFile.name.endsWith("~") || scriptFile.name.startsWith(".")) {
+                return;
+            }
             log.info("Executing ${scriptFile.getAbsolutePath()}");
             executeMojo(
                     plugin(
@@ -36,7 +39,21 @@ public class AmzRunner {
                     ),
                     goal("execute"),
                     configuration(
-                            element(name("source"), scriptFile.getAbsolutePath())
+                            element(name("source"), scriptFile.getAbsolutePath()),
+                            element(name("classpath"),
+                                    element(name("element"),
+                                            element(name("groupId"), "org.codehaus.groovy"),
+                                            element(name("artifactId"), "groovy-xmlrpc"),
+                                            element(name("version"), "0.4")),
+                                    element(name("element"),
+                                            element(name("groupId"), "com.dolby.jira.net"),
+                                            element(name("artifactId"), "jira-soap"),
+                                            element(name("version"), "3.13.4")),
+                                    element(name("element"),
+                                            element(name("groupId"), "org.codehaus.groovy.modules.http-builder"),
+                                            element(name("artifactId"), "http-builder"),
+                                            element(name("version"), "0.5.0-RC1")))
+
                     ),
                     env
             );

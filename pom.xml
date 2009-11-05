@@ -30,13 +30,41 @@
             <artifactId>http-builder</artifactId>
             <version>0.5.0-RC1</version>
         </dependency>
+
+        <!-- Useful dependencies -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xmlrpc</artifactId>
+            <version>0.4</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy.modules</groupId>
+            <artifactId>groovyws</artifactId>
+            <version>0.5.0</version>
+        </dependency>
+        <dependency>
+                    <groupId>com.dolby.jira.net</groupId>
+                    <artifactId>jira-soap</artifactId>
+                    <version>3.13.4</version>
+                </dependency>
+        
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>jivesoftware</groupId>
+                <artifactId>smack</artifactId>
+                <version>3.0.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -66,11 +94,20 @@
     </build>
 
     <repositories>
-        <repository>
+       <repository>
             <id>mojo-executor-repository</id>
             <name>Mojo Executor Repository for Maven</name>
             <url>http://twdata-m2-repository.googlecode.com/svn/</url>
         </repository>
+       <repository>
+            <id>asf-incubator</id>
+            <url>http://people.apache.org/repo/m2-incubating-repository/</url>
+        </repository>
+       <repository>
+            <id>ibiblio</id>
+            <url>http://repo2.maven.org/maven2/</url>
+        </repository>
+
     </repositories>
     <properties>
         <gmaven.runtime>1.5</gmaven.runtime>

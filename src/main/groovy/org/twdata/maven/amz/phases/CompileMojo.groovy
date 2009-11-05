@@ -1,4 +1,4 @@
-package org.twdata.maven.amz
+package org.twdata.maven.amz.phases
 
 import org.twdata.maven.amz.AbstractAmzMojo
 
